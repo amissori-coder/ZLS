@@ -48,9 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
+    // --- FAQ accordion ---
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isActive = item.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            // Toggle current
+            if (!isActive) item.classList.add('active');
+        });
+    });
+
     // Add fade-in class to animatable elements
     const animateElements = document.querySelectorAll(
-        '.card, .vantaggio, .chi-card, .chi-note, .perche-item, .cta-text, .cta-form'
+        '.card, .vantaggio, .chi-card, .chi-note, .perche-item, .cta-text, .cta-form, .investimento-card, .processo-step, .faq-item, .detail-block, .highlight-box'
     );
 
     animateElements.forEach((el, index) => {
