@@ -199,16 +199,8 @@ img {
 }
 
 .unindustria-banner img {
-    height: 60px;
+    height: 80px;
     width: auto;
-}
-
-.unindustria-banner span {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
 }
 
 .navbar .logo-img {
