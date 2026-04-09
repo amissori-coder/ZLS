@@ -8,30 +8,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Navbar scroll effect ---
     const navbar = document.getElementById('navbar');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // --- Mobile menu ---
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    // Close menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
-    });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 
     // --- Scroll animations (Intersection Observer) ---
     const observerOptions = {
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add fade-in class to animatable elements
     const animateElements = document.querySelectorAll(
-        '.card, .vantaggio, .chi-card, .chi-note, .perche-item, .cta-text, .cta-form, .investimento-card, .processo-step, .faq-item, .detail-block, .highlight-box'
+        '.card, .vantaggio, .chi-card, .chi-note, .perche-item, .cta-text, .cta-form, .investimento-card, .processo-step, .faq-item, .detail-block, .highlight-box, .area-card'
     );
 
     animateElements.forEach((el, index) => {
@@ -74,36 +78,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Contact form handling ---
     const contactForm = document.getElementById('contactForm');
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
 
-        // Validate required fields
-        if (!data.nome || !data.azienda || !data.email) {
-            showNotification('Compila tutti i campi obbligatori.', 'error');
-            return;
-        }
+            // Validate required fields
+            if (!data.nome || !data.azienda || !data.email) {
+                showNotification('Compila tutti i campi obbligatori.', 'error');
+                return;
+            }
 
-        if (!data.privacy) {
-            showNotification('Devi accettare il trattamento dei dati personali.', 'error');
-            return;
-        }
+            if (!data.privacy) {
+                showNotification('Devi accettare il trattamento dei dati personali.', 'error');
+                return;
+            }
 
-        // Simulate form submission
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Invio in corso...';
-        submitBtn.disabled = true;
+            // Simulate form submission
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Invio in corso...';
+            submitBtn.disabled = true;
 
-        setTimeout(() => {
-            showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
-            contactForm.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 1500);
-    });
+            setTimeout(() => {
+                showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    }
 
     // --- Notification system ---
     function showNotification(message, type) {
@@ -160,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- Smooth scroll for anchor links ---
+    // --- Smooth scroll for same-page anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
