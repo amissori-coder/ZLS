@@ -1500,4 +1500,160 @@ img {
     .processo-timeline::before {
         left: 27px;
     }
+
+    .area-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   MINI HERO FOR SUB-PAGES
+   ============================================ */
+.hero-mini {
+    min-height: auto;
+    padding: 140px 0 60px;
+}
+
+.hero-mini h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* ============================================
+   ACTIVE NAV LINK
+   ============================================ */
+.nav-links a.active {
+    color: var(--accent) !important;
+    font-weight: 700;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* ============================================
+   LANDING PAGE AREA CARDS
+   ============================================ */
+.area-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.area-card {
+    padding: 48px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+}
+
+.area-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+}
+
+.area-card-zls {
+    border-top: 4px solid #1a3a5c;
+}
+
+.area-card-zes {
+    border-top: 4px solid #0f766e;
+}
+
+.area-card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.area-card .area-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.area-card .area-percent {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.area-card-zls .area-percent {
+    color: #1a3a5c;
+}
+
+.area-card-zes .area-percent {
+    color: #0f766e;
+}
+
+.area-card .area-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.area-card .btn {
+    width: 100%;
+}
+
+.area-card-zls .btn {
+    background: #1a3a5c;
+    color: #fff;
+}
+
+.area-card-zes .btn {
+    background: #0f766e;
+    color: #fff;
+}
+
+/* ============================================
+   CTA MINI (sub-pages)
+   ============================================ */
+.cta-mini {
+    text-align: center;
+    padding: 64px 0;
+    background: var(--bg-secondary);
+}
+
+.cta-mini h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.cta-mini p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+/* ZES-specific hero accent */
+.hero-zes {
+    background: linear-gradient(135deg, #0a2e2b 0%, #0f766e 100%);
+}
+
+.hero-zes .hero-badge {
+    background: rgba(15, 118, 110, 0.2);
+    border-color: rgba(15, 118, 110, 0.4);
+    color: #5eead4;
+}
+
+.hero-zes .text-accent {
+    color: #5eead4;
+    -webkit-text-fill-color: #5eead4;
+}
+
+.hero-zes .stat-number {
+    color: #5eead4;
+}
+
+.hero-zes .hero-subtitle strong {
+    color: #ffffff;
 }
