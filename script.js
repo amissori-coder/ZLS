@@ -101,17 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Invio in corso...';
             submitBtn.disabled = true;
 
+            const formData = new FormData(contactForm);
+            const jsonData = {
+                nome: formData.get('nome'),
+                azienda: formData.get('azienda'),
+                email: formData.get('email'),
+                telefono: formData.get('telefono'),
+                messaggio: formData.get('messaggio')
+            };
+
             fetch(contactForm.action, {
                 method: 'POST',
-                body: new FormData(contactForm),
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
-                    contactForm.reset();
-                } else {
-                    showNotification('Si è verificato un errore. Riprova o contattaci direttamente via email.', 'error');
-                }
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(jsonData)
+            }).then(() => {
+                showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
+                contactForm.reset();
             }).catch(() => {
                 showNotification('Errore di connessione. Riprova o contattaci a andreamissori@revilaw.it', 'error');
             }).finally(() => {
