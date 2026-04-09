@@ -101,13 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Invio in corso...';
             submitBtn.disabled = true;
 
-            const formData = new FormData(contactForm);
             const jsonData = {
-                nome: formData.get('nome'),
-                azienda: formData.get('azienda'),
-                email: formData.get('email'),
-                telefono: formData.get('telefono'),
-                messaggio: formData.get('messaggio')
+                nome: data.nome,
+                azienda: data.azienda,
+                email: data.email,
+                telefono: data.telefono || '',
+                messaggio: data.messaggio || ''
             };
 
             var GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyq8cvS_WNMFTMDi2jFhft-xnqnKjYDvIz5On9pfM66y5dGUzcXYZraAF03CCW-rJ-sQw/exec';
