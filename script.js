@@ -110,7 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 messaggio: formData.get('messaggio')
             };
 
-            fetch(contactForm.action, {
+            var GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyq8cvS_WNMFTMDi2jFhft-xnqnKjYDvIz5On9pfM66y5dGUzcXYZraAF03CCW-rJ-sQw/exec';
+
+            fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
