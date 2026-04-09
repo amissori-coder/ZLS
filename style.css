@@ -170,43 +170,45 @@ img {
     width: auto;
 }
 
-.nav-brand-divider {
-    width: 1px;
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
-}
-
-.navbar.scrolled .nav-brand-divider {
-    background: var(--border-color);
-}
-
-.unindustria-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.nav-associati {
     font-size: 0.7rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.3px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
-.unindustria-badge img {
-    height: 28px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.7;
-    transition: var(--transition);
-}
-
-.navbar.scrolled .unindustria-badge {
+.navbar.scrolled .nav-associati {
     color: var(--text-muted);
 }
 
-.navbar.scrolled .unindustria-badge img {
-    filter: none;
-    opacity: 0.8;
+/* BANNER UNINDUSTRIA */
+.unindustria-banner {
+    background: #ffffff;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.unindustria-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.unindustria-banner img {
+    height: 60px;
+    width: auto;
+}
+
+.unindustria-banner span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .navbar .logo-img {
@@ -490,6 +492,70 @@ img {
 
 .section-alt {
     background: var(--bg-secondary);
+}
+
+/* ZLS area - navy accent */
+.section-zls {
+    border-top: 4px solid var(--brand-navy);
+}
+
+.section-zls .section-tag {
+    background: #f0f4f8;
+    border-color: #c8d8e8;
+    color: var(--brand-navy);
+}
+
+.section-zls .card {
+    border-top: 3px solid var(--brand-navy);
+}
+
+.section-zls .card::before {
+    background: var(--brand-navy);
+}
+
+/* ZES area - teal/green accent */
+.section-zes {
+    border-top: 4px solid #0f766e;
+    background: #f0fdfa;
+}
+
+.section-zes .section-tag {
+    background: #ccfbf1;
+    border-color: #99f6e4;
+    color: #0f766e;
+}
+
+.section-zes .card {
+    border-top: 3px solid #0f766e;
+}
+
+.section-zes .card::before {
+    background: #0f766e;
+}
+
+.section-zes .card-icon {
+    background: #ccfbf1;
+    border-color: #99f6e4;
+    color: #0f766e;
+}
+
+.section-zes .card:hover {
+    border-color: #99f6e4;
+}
+
+.section-zes .highlight-box {
+    background: #ccfbf1;
+    border-color: #99f6e4;
+    border-left-color: #0f766e;
+}
+
+.section-zes .highlight-box strong {
+    color: #0f766e;
+}
+
+.section-zes .text-accent {
+    color: #0f766e;
+    -webkit-text-fill-color: #0f766e;
 }
 
 .section-header {
@@ -1337,6 +1403,14 @@ img {
     }
 
     .stat-divider {
+        display: none;
+    }
+
+    .unindustria-banner img {
+        height: 45px;
+    }
+
+    .nav-associati {
         display: none;
     }
 }
