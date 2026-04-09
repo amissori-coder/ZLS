@@ -96,18 +96,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate form submission
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Invio in corso...';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
-                contactForm.reset();
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    showNotification('Grazie! La tua richiesta è stata inviata. Ti ricontatteremo al più presto.', 'success');
+                    contactForm.reset();
+                } else {
+                    showNotification('Si è verificato un errore. Riprova o contattaci direttamente via email.', 'error');
+                }
+            }).catch(() => {
+                showNotification('Errore di connessione. Riprova o contattaci a andreamissori@revilaw.it', 'error');
+            }).finally(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            });
         });
     }
 
